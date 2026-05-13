@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Boshoku Device India</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header img {
+            height: 70px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #1a1a1a;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #ffcc00;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        nav ul li {
+            padding: 15px 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #000;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d10000;
+        }
+
+        /* SECTION */
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* PRODUCT CARDS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #b30000;
+        }
+
+        /* FEATURES */
+        .features {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .features ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="Index.html">
+            <img src="ogp.png" alt="Logo">
+        </a>
+        <h1>Toyota Boshoku Device India</h1>
+    </header>
+
+    <!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="corporate.html">Corporate</a></li>
+            <li><a href="Sales.html">Sales</a></li>
+            <li><a href="Service.html">Service</a></li>
+            <li><a href="Product.html">Product</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container">
+
+        <h2>Our Products</h2>
+        <p>
+            Toyota Boshoku Device India Private Limited specializes in manufacturing high-quality automotive seating components designed for safety, comfort, and performance.
+            As part of Toyota Boshoku Corporation, we ensure world-class engineering standards.
+        </p>
+
+        <!-- PRODUCTS -->
+        <div class="products">
+
+            <div class="card">
+                <a href="seat slider.html">
+                    <img src="OIP.webp" alt="Seat Slider">
+                </a>
+                <h3>Seat Slider</h3>
+                <p>Allows smooth forward/backward seat adjustment with high durability.</p>
+            </div>
+
+            <div class="card">
+                <a href="recliner.html">
+                    <img src="Picture1.jpg" alt="Seat Recliner">
+                </a>
+                <h3>Seat Recliner</h3>
+                <p>Adjusts seat angle for ergonomic comfort and better posture.</p>
+            </div>
+
+            <div class="card">
+                <a href="frame.html">
+                    <img src="OIP (1).webp" alt="Seat Frame">
+                </a>
+                <h3>Seat Mechanisms</h3>
+                <p>Complete integrated seating systems for modern vehicles.</p>
+            </div>
+
+        </div>
+
+        <!-- FEATURES -->
+        <div class="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>High precision engineering</li>
+                <li>Durable metal construction</li>
+                <li>Smooth motion control</li>
+                <li>Safety and comfort focused design</li>
+                <li>Global automotive standards compliance</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Toyota Boshoku Device India | All Rights Reserved
+    </footer>
+
+</body>
+
+</html>

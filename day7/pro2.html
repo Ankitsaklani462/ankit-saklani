@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: aliceblue;
+            position: absolute;
+            margin: 150px;
+            z-index: 1;
+        }
+
+        .box2 {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: rgb(53, 105, 151);
+            position: absolute;
+            margin: 200px;
+            z-index: 2;
+        }
+
+        .box3 {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: rgb(28, 14, 79);
+            position: absolute;
+            margin: 250px;
+            z-index: 3;
+        }
+
+        .box4 {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: rgb(79, 5, 32);
+            position: absolute;
+            margin: 300px;
+            z-index: 4;
+        }
+
+        .box5 {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: rgb(54, 172, 50);
+            position: absolute;
+            margin: 350px;
+            z-index: 5;
+        }
+
+        .box1:hover, .box2:hover , .box3:hover, .box4:hover, .box5:hover{
+            animation: slide-right 0.5s cubic-bezier(.25, .46, .45, .94) both;
+        }
+
+
+
+        @keyframes slide-right {
+            0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+
+            100% {
+                -webkit-transform: translateX(400px);
+                transform: translateX(400px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+
+</body>
+
+</html>

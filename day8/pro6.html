@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num1 = parseInt(prompt("Enter first num:"));
+let num2 = parseInt(prompt("Enter second num:"));
+
+if (num1 <= 0 && num2 <= 0) {
+    document.write("again Enter");
+} 
+else {
+    if (num1 > num2) {
+        document.write("First num is greater: " + num1);
+    } 
+    else if (num2 > num1) {
+        document.write("Second num is greater: " + num2);
+    } 
+    else {
+        document.write("Both numbers are equal");
+    }
+}
+    </script>
+    
+</body>
+</html> 
