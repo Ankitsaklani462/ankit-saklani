@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         let start = parseInt(prompt("Enter your start num:"))
+        let end = parseInt(prompt("Enter your end num:"))
+        
+        if(start>end){
+            let temp=start;
+            start=end;
+            end=temp
+        }
+
+      let result=0;
+        for (i=start; i<=end; i++){
+            result=result+i
+        }
+        document.write(result)
+    </script>
+
+</body>
+
+</html>
