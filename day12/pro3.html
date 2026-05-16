@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num = parseInt(prompt("Enter your digit"));
+        document.write(num);
+        let sum = 0;
+        while (num > 0) {
+            rem = num % 10;
+            num = parseInt(num / 10);
+            sum = sum + rem;
+        }
+        document.write("<br>");
+        document.write(sum);
+    </script>
+
+</body>
+
+</html>

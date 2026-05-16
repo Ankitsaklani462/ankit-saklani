@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        
+    </style>
+    <script>function multi() {
+            let num1 = parseInt(document.getElementById("num1").value)
+            let num2 = parseInt(document.getElementById("num2").value)
+            result = num1 * num2
+            document.getElementById("res").value = result
+        }
+        function add() {
+            let num1 = parseInt(document.getElementById("num1").value)
+            let num2 = parseInt(document.getElementById("num2").value)
+
+            result = num1 + num2
+            document.getElementById("res").value = result
+        }
+        function sub() {
+            let num1 = parseInt(document.getElementById("num1").value)
+            let num2 = parseInt(document.getElementById("num2").value)
+
+            result = num1 - num2
+
+
+            document.getElementById("res").value = result
+        } function div() {
+            let num1 = parseInt(document.getElementById("num1").value)
+            let num2 = parseInt(document.getElementById("num2").value)
+
+            result = num1 / num2
+
+
+            document.getElementById("res").value = result
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>first number: <input type="text" name="" id="num1"></div>
+    <div>second number: <input type="text" name="" id="num2"></div>
+    <div><button onclick="multi()">Multiply</button>
+        <button onclick="add()">Add</button>
+        <button onclick="sub()">Subtract</button>
+        <button onclick="div()">Divide</button>
+    </div>
+
+    <div>Result: <input type="text" name="" id="res"></div>
+
+</body>
+
+</html>

@@ -10,23 +10,19 @@
 <body>
     <script>
         for (let num = 2; num <= 100; num++) {
-
             let status = true;
-
             for (let i = 2; i < num; i++) {
-                if (num % i == 0) { status = false }}
-
-                if (status) {
-                    document.write(num);
-                    document.write("<br>")
-                }
+                if (num % i == 0) { status = false }
             }
-            
-        
-
+            if (status) {
+                document.write(num);
+                document.write("<br>")
+            }
+        }
 
 
     </script>
+
 
 </body>
 
