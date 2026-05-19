@@ -1,0 +1,2 @@
+for ball in range(1,10):
+    print(ball)

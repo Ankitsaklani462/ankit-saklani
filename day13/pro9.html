@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            /* background: linear-gradient(135deg, #4f46e5, #7c3aed); */
+            background: linear-gradient(135deg, #4f46e5, #ee7818);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .card {
+            width: 900px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .left {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .left img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .left h1 {
+            margin-bottom: 10px;
+        }
+
+        .left p {
+            margin: 8px 0;
+            color: #d1d5db;
+        }
+
+        .role {
+            background: #10b981;
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .right {
+            padding: 40px;
+        }
+
+        .title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            border-left: 5px solid #7c3aed;
+            padding-left: 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .box {
+            background: #f3f4f6;
+            padding: 18px;
+            border-radius: 15px;
+        }
+
+        .label {
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        @media(max-width:768px) {
+
+            .card {
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+        button:hover {
+            scale: 105%;
+            color: #0a8912;
+        }
+        .search{
+            background: #f3f4f6;
+            padding:8px ;
+            border-radius: 15px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div>
+
+
+
+
+        <div class="card">
+
+            <div class="left">
+
+
+                <img id="image" src="" alt="profile">
+
+                <h1 id="name">Loading...</h1>
+
+                <p id="email"></p>
+
+                <p id="phone"></p>
+
+                <div class="role" id="role"></div>
+
+            </div>
+
+            <div class="right">
+                <div class="search"><h1>Enter your id:</h1>
+                <div style="margin: 10px;"><input type="number" id="user_id" placeholder="Enter Employee ID"
+                        style="background-color: rgb(189, 195, 195);height: 30px; width: 300px;">
+                    <button onclick="getUser()"
+                        style="background-color: rgb(189, 195, 195);height: 30px; width: 70px; border-radius: 5px;">Submit</button></div>
+                </div><br>
+
+                <h2 class="title">User Details</h2>
+
+
+                <div class="grid">
+
+                    <div class="box">
+                        <div class="label">Username</div>
+                        <div class="value" id="username"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="label">Age</div>
+                        <div class="value" id="age"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="label">Gender</div>
+                        <div class="value" id="gender"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="label">University</div>
+                        <div class="value" id="university"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="label">Company</div>
+                        <div class="value" id="company"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="label">Country</div>
+                        <div class="value" id="country"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <script>
+            function getUser() {
+
+                let user_id = document.getElementById("user_id").value;
+
+                const requestOptions = {
+                    method: "GET",
+                    redirect: "follow"
+                };
+
+                fetch("https://dummyjson.com/users/" + user_id, requestOptions)
+
+                    .then((response) => response.json())
+
+                    .then((user) => {
+
+                        document.getElementById("image").src = user.image;
+
+                        document.getElementById("name").innerText =
+                            user.firstName + " " + user.lastName;
+
+                        document.getElementById("email").innerText = user.email;
+
+                        document.getElementById("phone").innerText = user.phone;
+
+                        document.getElementById("role").innerText = user.role;
+
+                        document.getElementById("username").innerText = user.username;
+
+                        document.getElementById("age").innerText = user.age;
+
+                        document.getElementById("gender").innerText = user.gender;
+
+                        document.getElementById("university").innerText =
+                            user.university;
+
+                        document.getElementById("company").innerText =
+                            user.company.name;
+
+                        document.getElementById("country").innerText =
+                            user.address.country;
+
+                    })
+
+                    .catch((error) => console.error(error));
+            }
+        </script>
+
+</html>

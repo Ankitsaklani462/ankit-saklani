@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box_red {
+            color: red;
+            border: 2px solid black;
+            display: flex;
+            width: 120 px;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            padding: 30px;
+            background-color: red;
+        }
+
+        .box_green {
+            width: 300px;
+            padding: 30px;
+
+            color: green;
+            border: 2px solid black;
+            display: flex;
+            width: 120 px;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+        }
+        div{width:300px;
+            padding: 30px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="mydiv"></div>
+    <button id="mybtn1">Red</button>
+    <button id="mybtn2">Green</button>
+    <script>
+        document.getElementById("mybtn1").addEventListener('click', () => {
+            const myelement = document.getElementById('mydiv')
+            myelement.classList.remove('box_green')
+            myelement.classList.add('box_red')
+        }); document.getElementById("mybtn2").addEventListener('click', () => {
+            const myelement = document.getElementById('mydiv')
+            myelement.classList.remove('box_red')
+            myelement.classList.add('box_green')
+        });
+    </script>
+
+
+</body>
+
+</html>
