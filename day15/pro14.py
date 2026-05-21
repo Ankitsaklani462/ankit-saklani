@@ -1,0 +1,11 @@
+name=input("Enter your name:")
+for item in name:
+ print(item) 
+
+
+
+
+ 
+
+
+
