@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        padding: 20px
+    }
+
+    .box {
+        height: 300px;
+        width: 300px;
+        background-color: aqua;
+        border: 2px solid black;
+    }
+
+    .hide {
+        display: none;
+    }
+    
+    
+</style>
+
+<body>
+    <div class="box" id="mydiv"><img src="Screenshot 2026-05-04 163511.png" alt=""></div>
+    <button id="hidebtn">Hide</button>
+    <button id="unhidebtn">Unhide</button>
+    <script>
+        document.getElementById('hidebtn').addEventListener('click', () => {
+            document.getElementById('mydiv').classList.add('hide')
+
+
+        }
+        )
+        document.getElementById('unhidebtn').addEventListener('click', () => {
+            document.getElementById('mydiv').classList.remove('hide')
+
+        }
+
+        )
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>.hide{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <form action="" class="hide" id="myformid">
+       <div>username:<input type="text" name="" id=""></div> 
+        <div> Password:<input type="password" name="" id=""></div>
+        <div><input type="submit" value="Submit"></div>
+       
+    </form>
+    <script>
+      
+      setTimeout(()=>{
+        document.getElementById('myformid').classList.remove('hide');
+      },3000);
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        padding: 20px
+    }
+
+    .box {
+        height: 300px;
+        width: 300px;
+        background-color: aqua;
+        border: 2px solid black;
+    }
+
+    .capital {
+        text-transform: uppercase;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="box" id="mydiv">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni amet accusantium, veniam
+        reiciendis voluptatibus odio excepturi, aspernatur velit nobis, esse provident quidem dolore repudiandae non
+        minus similique quia saepe animi?</div>
+    <button id="capital">capital</button> <button id="hidebtn">Hide</button>
+    <button id="unhidebtn">Unhide</button> <button id="BOLDBTN">BOLD</button>
+    <button id="underline">Underline</button>
+    <script>
+        document.getElementById('hidebtn').addEventListener('click', () => {
+            document.getElementById('mydiv').classList.add('hide')
+
+
+        }
+        )
+        document.getElementById('unhidebtn').addEventListener('click', () => {
+            document.getElementById('mydiv').classList.remove('hide')
+
+        }
+
+        )
+        document.getElementById('capital').addEventListener('click', () => {
+            document.getElementById('mydiv').classList.add('capital')
+        }
+        )
+        document.getElementById('BOLDBTN').addEventListener('click', () => {
+            document.getElementById('mydiv').style.fontWeight = "bold"
+        }
+        )
+        document.getElementById('underline').addEventListener('click', () => {
+            document.getElementById('mydiv').style.textDecorationLine = "underline"
+        }
+        )
+    </script>
+
+
+
+</body>
+
+</html>
