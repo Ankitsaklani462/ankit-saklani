@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class="box">Hello user1</div>
+        <div class="box">Hello user2</div>
+        <div class="box">Hello user3</div>
+        <div class="box">Hello user4</div>
+        <div class="box">Hello user5</div>
+    </div>
+    <script>
+        const data = [];
+        const boxes = document.getElementsByClassName('box');
+        for (let i = 0; i < boxes.length; i++) {
+            let text = boxes[i].textContent;
+            data.push(text);
+        }
+        console.log(data)
+
+
+
+    </script>
+
+</body>
+
+</html>

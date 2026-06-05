@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .odd{background-color: aqua;}
+        .even{background-color: blueviolet;}
+    </style>
+</head>
+
+
+
+<body>
+    
+        <div class="box">Hello user1</div>
+        <div class="box">Hello user2</div>
+        <div class="box">Hello user3</div>
+        <div class="box">Hello user4</div>
+        <div class="box">Hello user5</div>
+    
+    <script>
+    const boxes = document.getElementsByTagName('div');
+
+    for (let i = 0; i < boxes.length; i++) {
+        if (i % 2 == 0) {
+            boxes[i].classList.add('even');
+        } else {
+            boxes[i].classList.add('odd');
+        }
+    }
+</script>
+
+</body>
+
+</html>

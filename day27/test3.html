@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boxid table,#boxid td ,#boxid th{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="boxid"></div>
+
+    <script>
+        const reviews = [
+            {
+                "rating": 4,
+                "comment": "Fast shipping!",
+                "date": "2025-04-30T09:41:02.053Z",
+                "reviewerName": "Vivian Carter",
+                "reviewerEmail": "vivian.carter@x.dummyjson.com"
+            },
+            {
+                "rating": 5,
+                "comment": "Very satisfied!",
+                "date": "2025-04-30T09:41:02.053Z",
+                "reviewerName": "Ella Adams",
+                "reviewerEmail": "ella.adams@x.dummyjson.com"
+            },
+            {
+                "rating": 3,
+                "comment": "Poor quality!",
+                "date": "2025-04-30T09:41:02.053Z",
+                "reviewerName": "Liam Smith",
+                "reviewerEmail": "liam.smith@x.dummyjson.com"
+            }
+        ];
+
+        const tableElement = document.createElement('table');
+        var trElement = document.createElement('tr');
+        const data = reviews[0];
+        for (const key in data) {
+            const thElement = document.createElement('th');
+            thElement.textContent = key;
+            trElement.appendChild(thElement);
+        }
+        tableElement.appendChild(trElement);
+
+        for (const singlereview of reviews) {
+            var trElement = document.createElement('tr');
+            for (const key in singlereview) {
+                const tdElement = document.createElement('td');
+                tdElement.textContent = singlereview[key];
+                trElement.appendChild(tdElement);
+            }
+            tableElement.appendChild(trElement);
+        }
+        const tableHolder = document.getElementById('boxid');
+        tableHolder.appendChild(tableElement)
+    </script>
+</body>
+
+</html>

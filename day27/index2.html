@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            height: 100vh;
+            width: 180px;
+            border: 2px solid black;
+            background-color: aqua;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+                    }
+    </style>
+<body><div>Title: <input type="text" id="titleid1">
+    Id:<input type="text" id="titleid2">
+    Description:<input type="text" id="titleid3">
+    Category:<input type="text" id="titleid4">
+    Price:<input type="text" id="titleid5">   
+    Rating:<input type="text" id="titleid6">
+    Stock:<input type="text" id="titleid7">
+    <p id="tags"></p></div>
+   
+
+    <script>
+        const requestOptions = {
+            method: "GET",
+            redirect: "follow"
+        };
+
+        fetch("https://dummyjson.com/products/46", requestOptions)
+            .then((response) => response.json())
+            .then((product) => {
+                document.getElementById('titleid1').textContent = product['title'];
+                { document.getElementById('titleid2').textContent = product['id']; }
+                { document.getElementById('titleid3').textContent = product['description']; }
+                { document.getElementById('titleid4').textContent = product['category']; }
+                { document.getElementById('titleid5').textContent = product['price']; }
+                { document.getElementById('titleid6').textContent = product['rating']; }
+                { document.getElementById('titleid7').textContent = product['stock']; }
+                const tagArr = product['tags'];
+                const tagsElement = document.getElementById('tags');
+                for (const tag of tagArr) {
+                    const btnElement = document.createElement('button');
+                    btnElement.textContent = tag;
+                    tagsElement.appendChild(btnElement);
+                }
+            })
+
+            .catch((error) => console.error(error));
+    </script>
+
+</body>
+
+</html>
+
+

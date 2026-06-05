@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        <style>
+  
+    .box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 140px;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button{
+    height: 40px;
+    border-radius: 5px;
+}
+input{
+    width: 145px;
+    height: 30px;
+    border: 2px solid black;
+font-size: 20px;
+font-weight: 3px;
+border-radius: 5px;
+}
+</style>
+</head>
+<body>
+    <input type="text" name="" id="screenid"><br><br>
+    <div class="box">
+        <button onclick="disp(this)">1</button>
+    <button onclick="disp(this)">2</button>
+    <button onclick="disp(this)">3</button>
+    <button onclick="disp(this)">4</button>
+    <button onclick="disp(this)">5</button>
+    <button onclick="disp(this)">6</button>
+    <button onclick="disp(this)">7</button>
+    <button onclick="disp(this)">8</button>
+    <button onclick="disp(this)">9</button>
+    <button onclick="disp(this)">0</button>
+    <button onclick="backspace()">Clear</button>
+</div>
+
+    <script>
+        function disp(btn) {
+            let data = btn.textContent;
+            let oldvalue= document.getElementById('screenid').value
+            let newvalue=oldvalue+data
+            document.getElementById('screenid').value=newvalue
+        }
+         function backspace() {
+    let screen = document.getElementById('screenid');
+    screen.value = screen.value.substring(0, screen.value.length - 1);
+}
+
+    
+    </script>
+</body>
+</html>

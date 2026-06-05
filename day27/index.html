@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="titleid1"></h2>
+    <h2 id="titleid2"></h2>
+    <h2 id="titleid3"></h2>
+    <h2 id="titleid4"></h2>
+    <h2 id="titleid5"></h2>
+    <h2 id="titleid6"></h2>
+    <h2 id="titleid7"></h2>
+    <p id="tags"></p>
+
+    <script>
+        const requestOptions = {
+            method: "GET",
+            redirect: "follow"
+        };
+
+        fetch("https://dummyjson.com/products/46", requestOptions)
+            .then((response) => response.json())
+            .then((product) => {
+                document.getElementById('titleid1').textContent = product['title'];
+                { document.getElementById('titleid2').textContent = product['id']; }
+                { document.getElementById('titleid3').textContent = product['description']; }
+                { document.getElementById('titleid4').textContent = product['category']; }
+                { document.getElementById('titleid5').textContent = product['price']; }
+                { document.getElementById('titleid6').textContent = product['rating']; }
+                { document.getElementById('titleid7').textContent = product['stock']; }
+                const tagArr = product['tags'];
+                const tagsElement = document.getElementById('tags')
+                for (let i = 0; i < tagArr.length; i++) {
+
+                    const btnElement = document.createElement('button');
+                    btnElement.textContent = tagArr[i];
+                    tagsElement.appendChild(btnElement);
+                }
+            })
+
+            .catch((error) => console.error(error));
+    </script>
+
+</body>
+
+</html>

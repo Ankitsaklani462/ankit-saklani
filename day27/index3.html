@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product — DummyJSON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#0b74ff;--muted:#6b7280;--bg:#f8fafc;--card-bg:#ffffff}
+        *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+        html,body{height:100vh;overflow:hidden}
+        body{margin:0;background:var(--bg);color:#0f172a;display:flex;flex-direction:column}
+        header{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 28px;background:linear-gradient(90deg,#fff,#f8fafc);box-shadow:0 2px 8px rgba(15,23,42,0.04)}
+        .brand{display:flex;gap:12px;align-items:center}
+        .logo{height:40px;width:40px;border-radius:8px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+        .container{padding:28px;display:flex;justify-content:center;flex:1 1 auto;min-height:0}
+        .card{width:100%;max-width:1100px;background:var(--card-bg);border-radius:12px;box-shadow:0 10px 40px rgba(2,6,23,0.06);display:grid;grid-template-columns:420px 1fr;gap:28px;padding:28px;height:100%;overflow:hidden}
+        .media{display:flex;flex-direction:column;gap:12px;overflow:hidden}
+        .media img{width:100%;height:420px;object-fit:cover;border-radius:10px;transition:transform .18s ease}
+        .thumbs{display:flex;gap:8px;margin-top:6px;overflow-x:auto;padding-bottom:4px}
+        .thumbs img{width:84px;height:64px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:border-color .12s ease;flex:0 0 auto}
+        .thumbs img.active{border-color:var(--accent)}
+        .details{overflow:auto;min-height:0;padding-right:4px}
+        .details h1{font-size:24px;margin:0 0 6px}
+        .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+        .price{font-weight:700;color:#0f172a;font-size:22px;margin:6px 0}
+        .row{display:flex;gap:12px;align-items:center}
+        .btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+        .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(11,116,255,0.12)}
+        .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+        .tag{background:#f1f9ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-size:13px;border:1px solid rgba(11,116,255,0.06)}
+        .desc{margin-top:14px;color:#334155;line-height:1.6}
+        .info-grid{display:flex;gap:18px;margin-top:12px;color:var(--muted);font-size:14px}
+        .meta-badge{background:#f1f5f9;padding:6px 10px;border-radius:8px;font-size:13px;color:var(--muted)}
+        .controls{display:flex;gap:8px;align-items:center}
+        .qty{display:inline-flex;align-items:center;border:1px solid #e6eefb;border-radius:8px;overflow:hidden}
+        .qty button{background:transparent;border:0;padding:8px 10px;cursor:pointer}
+        .qty input{width:56px;text-align:center;border:0;padding:8px}
+        .toast{position:fixed;right:20px;bottom:24px;background:#0b74ff;color:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 6px 30px rgba(11,116,255,0.16);display:none}
+        .loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.6);backdrop-filter:blur(2px);border-radius:8px}
+        .small{font-size:13px;color:var(--muted)}
+        footer{padding:18px;color:var(--muted);text-align:center;font-size:13px}
+        @media (max-width:980px){.card{grid-template-columns:1fr;max-width:720px}.media img{height:300px}}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <div class="logo">DB</div>
+            <div>
+                <div style="font-weight:600">Blinkit</div>
+                <div class="small">Store</div>
+            </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+            <input id="search-id" type="number" min="1" placeholder="Product ID" style="width:180px;padding:10px;border-radius:8px;border:1px solid #e6eefb">
+            <button id="search-btn" class="btn" style="padding:10px 12px">Search</button>
+            <button id="random-btn" class="btn ghost" style="padding:10px 12px">Random</button>
+        </div>
+    </header>
+
+    <div class="container">
+    <main class="card" id="product-card">
+        <section class="media">
+            <img id="product-image" src="" alt="Product image">
+            <div class="thumbs" id="thumbs" aria-hidden="false"></div>
+            <div id="loader" class="loader" style="display:none">Loading...</div>
+        </section>
+
+        <section class="details">
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+                <div>
+                    <h1 id="title">Loading...</h1>
+                    <div class="meta" id="category">&nbsp;</div>
+                </div>
+                <img id="thumbnail" src="" alt="thumbnail" style="width:72px;height:72px;object-fit:cover;border-radius:8px;display:none">
+            </div>
+
+            <div style="display:flex;align-items:center;gap:18px;margin-top:8px">
+                <div>
+                    <div class="price" id="price">&nbsp;</div>
+                    <div class="small"> <span id="discount" style="color:#ef4444"></span></div>
+                </div>
+                <div class="info-grid">
+                    <div id="rating">⭐ 0</div>
+                    <div id="stock">Stock: 0</div>
+                    <div id="pid">ID: -</div>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+                <div class="meta-badge">SKU: <strong id="sku">-</strong></div>
+                <div class="meta-badge">Weight: <strong id="weight">-</strong> kg</div>
+                <div class="meta-badge">MOQ: <strong id="moq">-</strong></div>
+                <div class="meta-badge">Availability: <strong id="availability">-</strong></div>
+            </div>
+
+            <div class="tags" id="tags" aria-live="polite"></div>
+
+            <div class="controls" style="margin-top:12px">
+                <div class="qty" aria-label="Quantity selector">
+                    <button id="dec">−</button>
+                    <input id="qty" type="number" min="1" value="1">
+                    <button id="inc">+</button>
+                </div>
+                <button class="btn" id="buy">Add to cart</button>
+                <button class="btn ghost" id="wishlist">Add to wishlist</button>
+            </div>
+
+            <div class="meta" style="margin-top:12px">
+                <div>Warranty: <strong id="warranty">-</strong></div>
+                <div>Shipping: <strong id="shipping">-</strong></div>
+                <div>Return: <strong id="returnPolicy">-</strong></div>
+            </div>
+
+            <div style="margin-top:12px">
+                <div style="font-weight:600;margin-bottom:6px">Dimensions</div>
+                <div id="dimensions" class="small">-</div>
+            </div>
+
+            <div style="margin-top:12px">
+                <div style="font-weight:600;margin-bottom:6px">Product details</div>
+                <p class="desc" id="description"></p>
+            </div>
+
+            <div style="margin-top:18px">
+                <div style="display:flex;align-items:center;justify-content:space-between"><div style="font-weight:600">Reviews</div><div class="small" id="reviews-count">0 reviews</div></div>
+                <div id="reviews" style="margin-top:8px;display:grid;gap:8px"></div>
+            </div>
+
+            <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+                <div>
+                    <div class="small">Barcode</div>
+                    <div id="barcode" class="small">-</div>
+                </div>
+                <div>
+                    <div class="small">QR</div>
+                    <img id="qrcode" src="" alt="qr" style="width:72px;height:72px;object-fit:cover;border-radius:8px;display:none">
+                </div>
+                <div style="margin-left:auto;text-align:right" class="small">
+                    <div>Created: <span id="meta_createdAt">-</span></div>
+                    <div>Updated: <span id="meta_updatedAt">-</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    </div>
+
+    <div class="toast" id="toast">Added to cart</div>
+
+    <footer>© 2026 DummyStore • Demo data from dummyjson.com</footer>
+
+    <script>
+        const loader = document.getElementById('loader');
+        const toast = document.getElementById('toast');
+
+        function showLoader(show = true) {
+            loader.style.display = show ? 'flex' : 'none';
+        }
+
+        function showToast(text = 'Added to cart') {
+            toast.textContent = text; toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2200);
+        }
+
+        function formatCurrency(v) {
+            try { return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(v); } catch(e) { return '₹ ' + v }
+        }
+
+        function renderProduct(product) {
+            showLoader(false);
+            document.getElementById('title').textContent = product.title;
+            document.getElementById('category').textContent = product.category;
+            document.getElementById('price').textContent = formatCurrency(product.price);
+            document.getElementById('rating').textContent = '⭐ ' + product.rating + ' (' + (product.rating ? product.rating.toFixed(1) : '0') + ')';
+            document.getElementById('stock').textContent = 'Stock: ' + product.stock;
+            document.getElementById('pid').textContent = 'ID: ' + product.id;
+            document.getElementById('description').textContent = product.description;
+            // additional fields
+            document.getElementById('sku').textContent = product.sku || '-';
+            document.getElementById('weight').textContent = product.weight ?? '-';
+            document.getElementById('moq').textContent = product.minimumOrderQuantity ?? '-';
+            document.getElementById('availability').textContent = product.availabilityStatus ?? (product.stock>0? 'In Stock':'Out of stock');
+            document.getElementById('warranty').textContent = product.warrantyInformation || '-';
+            document.getElementById('shipping').textContent = product.shippingInformation || '-';
+            document.getElementById('returnPolicy').textContent = product.returnPolicy || '-';
+            if (product.discountPercentage) document.getElementById('discount').textContent = product.discountPercentage + '% off'; else document.getElementById('discount').textContent = '';
+
+            const imgEl = document.getElementById('product-image');
+            const thumbs = document.getElementById('thumbs');
+            thumbs.innerHTML = '';
+            if (product.images && product.images.length) {
+                imgEl.src = product.images[0];
+                product.images.forEach((src, i) => {
+                    const t = document.createElement('img');
+                    t.src = src; t.alt = product.title + ' ' + (i+1);
+                    if (i === 0) t.classList.add('active');
+                    t.addEventListener('click', () => {
+                        imgEl.src = src;
+                        document.querySelectorAll('.thumbs img').forEach(x => x.classList.remove('active'));
+                        t.classList.add('active');
+                    });
+                    thumbs.appendChild(t);
+                })
+            } else { imgEl.src = 'https://via.placeholder.com/600x400?text=No+image' }
+
+            const tagsContainer = document.getElementById('tags');
+            tagsContainer.innerHTML = '';
+            (product.tags || []).forEach(tag => {
+                const b = document.createElement('button'); b.type = 'button'; b.className = 'tag'; b.textContent = tag; tagsContainer.appendChild(b);
+            })
+
+            document.getElementById('buy').onclick = () => {
+                const qty = Number(document.getElementById('qty').value) || 1;
+                showToast(`${qty} × ${product.title} added to cart`);
+            };
+
+            // thumbnail
+            const thumbEl = document.getElementById('thumbnail');
+            if (product.thumbnail) { thumbEl.src = product.thumbnail; thumbEl.style.display = 'block'; } else { thumbEl.style.display = 'none'; }
+
+            // dimensions
+            const dims = product.dimensions;
+            if (dims && (dims.width || dims.height || dims.depth)) {
+                document.getElementById('dimensions').textContent = `W: ${dims.width || '-'} × H: ${dims.height || '-'} × D: ${dims.depth || '-'}`;
+            } else document.getElementById('dimensions').textContent = '-';
+
+            // meta
+            if (product.meta) {
+                document.getElementById('meta_createdAt').textContent = new Date(product.meta.createdAt).toLocaleString();
+                document.getElementById('meta_updatedAt').textContent = new Date(product.meta.updatedAt).toLocaleString();
+                document.getElementById('barcode').textContent = product.meta.barcode || '-';
+                const q = document.getElementById('qrcode');
+                if (product.meta.qrCode) { q.src = product.meta.qrCode; q.style.display = 'block'; } else q.style.display = 'none';
+            }
+
+            // reviews
+            const reviewsNode = document.getElementById('reviews'); reviewsNode.innerHTML = '';
+            const reviews = product.reviews || [];
+            document.getElementById('reviews-count').textContent = `${reviews.length} review${reviews.length!==1?'s':''}`;
+            reviews.forEach(r => {
+                const el = document.createElement('div'); el.style.padding='10px'; el.style.border='1px solid #eef2f6'; el.style.borderRadius='8px';
+                el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div style=\"font-weight:600\">${r.reviewerName || 'Anonymous'}</div><div class=\"small\">${new Date(r.date).toLocaleDateString()} · ⭐ ${r.rating}</div></div><div style=\"margin-top:6px;color:#334155\">${r.comment}</div>`;
+                reviewsNode.appendChild(el);
+            });
+        }
+
+        async function loadProductById(id) {
+            const card = document.getElementById('product-card');
+            try {
+                showLoader(true);
+                const res = await fetch('https://dummyjson.com/products/' + encodeURIComponent(id));
+                if (!res.ok) throw new Error('Product not found');
+                const product = await res.json();
+                renderProduct(product);
+            } catch (err) {
+                console.error(err);
+                showLoader(false);
+                card.innerHTML = `<p style="padding:24px;color:#ef4444">Failed to load product with ID ${id}.</p>`;
+            }
+        }
+
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const v = document.getElementById('search-id').value.trim();
+            if (!v) return alert('Enter a product ID');
+            const id = Number(v);
+            if (!Number.isInteger(id) || id <= 0) return alert('Enter a valid positive integer ID');
+            loadProductById(id);
+        });
+
+        document.getElementById('search-id').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') document.getElementById('search-btn').click();
+        });
+
+        document.getElementById('random-btn').addEventListener('click', () => {
+            const id = Math.floor(Math.random() * 100) + 1; // random id 1-100
+            document.getElementById('search-id').value = id; loadProductById(id);
+        });
+
+        // qty controls
+        document.getElementById('inc').addEventListener('click', () => {
+            const q = document.getElementById('qty'); q.value = Math.max(1, Number(q.value || 1) + 1);
+        });
+        document.getElementById('dec').addEventListener('click', () => {
+            const q = document.getElementById('qty'); q.value = Math.max(1, Number(q.value || 1) - 1);
+        });
+
+        // load default
+        loadProductById(46);
+    </script>
+
+</body>
+
+</html>
