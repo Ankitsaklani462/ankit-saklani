@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitor Gate Pass</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.form-card {
+    width: 380px;
+    max-height: 95vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4a00e0;
+    margin-bottom: 15px;
+}
+
+/* Sections */
+.group {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+    border-color: #4a00e0;
+    box-shadow: 0 0 5px rgba(74,0,224,0.3);
+}
+
+textarea {
+    resize: none;
+}
+
+/* Time row */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.row .group {
+    flex: 1;
+}
+
+/* Gender */
+.gender {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #4a00e0, #8e2de2);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Scrollbar */
+.form-card::-webkit-scrollbar {
+    width: 5px;
+}
+
+.form-card::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-card">
+
+    <div class="header">Visitor Gate Pass</div>
+
+    <div class="group">
+        <label>Visitor ID</label>
+        <input type="text" id="vid" readonly>
+    </div>
+
+    <div class="group">
+        <label>Visit Date</label>
+        <input type="date" id="dateid" readonly>
+    </div>
+
+    <div class="row">
+        <div class="group">
+            <label>In Time</label>
+            <input type="time" id="inid" readonly>
+        </div>
+
+        <div class="group">
+            <label>Out Time</label>
+            <input type="time" id="outid">
+        </div>
+    </div>
+
+    <div class="group">
+        <label>Visitor Name</label>
+        <input type="text" id="vname" required>
+    </div>
+
+    <div class="group">
+        <label>Gender</label>
+        <div class="gender">
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+            <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+    </div>
+
+    <div class="group">
+        <label>Contact Number</label>
+        <input type="number" id="phone" required>
+    </div>
+
+    <div class="group">
+        <label>Email</label>
+        <input type="email" id="email" required>
+    </div>
+
+    <div class="group">
+        <label>Company Name</label>
+        <input type="text" id="company" required>
+    </div>
+
+    <div class="group">
+        <label>Designation</label>
+        <input type="text" id="designation" required>
+    </div>
+
+    <div class="group">
+        <label>Address</label>
+        <textarea id="address" rows="3" required></textarea>
+    </div>
+
+    <div class="group">
+        <label>Purpose of Visit</label>
+        <input type="text" id="purpose" required>
+    </div>
+
+    <div class="group">
+        <label>Whom to Meet</label>
+        <input type="text" id="meet" required>
+    </div>
+
+    <button type="button" onclick="Savedata()">Submit</button>
+
+</div>
+
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+
+    let now = new Date();
+
+    let dd = String(now.getDate()).padStart(2, '0');
+    let mm = String(now.getMonth() + 1).padStart(2, '0');
+    let yyyy = now.getFullYear();
+
+    let today = `${yyyy}-${mm}-${dd}`;
+
+    let hours = String(now.getHours()).padStart(2, '0');
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+
+    let visitorId = `TBDI${dd}${mm}${yyyy}${hours}${minutes}${now.getSeconds()}${Math.floor(Math.random()*1000)}`;
+
+    document.getElementById("vid").value = visitorId;
+    document.getElementById("dateid").value = today;
+    document.getElementById("inid").value = `${hours}:${minutes}`;
+});
+
+function Savedata() {
+
+    let data = {
+        visitorId: document.getElementById("vid").value,
+        date: document.getElementById("dateid").value,
+        inTime: document.getElementById("inid").value,
+        outTime: document.getElementById("outid").value,
+        name: document.getElementById("vname").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        company: document.getElementById("company").value,
+        designation: document.getElementById("designation").value,
+        address: document.getElementById("address").value,
+        purpose: document.getElementById("purpose").value,
+        meet: document.getElementById("meet").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value
+    };
+
+    console.log(data);
+    alert("Visitor Pass Generated Successfully!");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+th,tr,td,table{
+  border: 2px solid black;
+  font-size: 25px;
+  text-align: center;
+  width: 100px;
+  
+}
+.box{
+  background-color: aqua;
+  height: 100vh;
+}
