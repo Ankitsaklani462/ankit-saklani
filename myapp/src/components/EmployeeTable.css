@@ -1,0 +1,79 @@
+.table-container {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden; /* Rounded corners corners par data hide karne ke liye */
+}
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 15px;
+}
+
+.emp-table th {
+  background-color: #f8fafc;
+  padding: 16px 24px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.emp-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+.emp-table tr:last-child td {
+  border-bottom: none; /* Last row ka border remove */
+}
+
+.emp-table tr:hover {
+  background-color: #f8fafc; /* Hover effect */
+}
+
+/* Action Buttons Inside Table */
+.action-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--primary);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit:hover {
+  background-color: rgba(79, 70, 229, 0.05);
+  border-color: var(--primary);
+}
+
+.btn-delete {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--danger);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: rgba(239, 68, 68, 0.05);
+  border-color: var(--danger);
+}

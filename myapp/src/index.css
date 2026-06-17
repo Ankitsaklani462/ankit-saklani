@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-main: #f8fafc;        /* Soft modern light background */
+  --bg-card: #ffffff;        /* Pure white for containers */
+  --text-main: #0f172a;      /* Dark slate for high readability */
+  --text-muted: #64748b;     /* Slate gray for secondary text */
+  --primary: #4f46e5;        /* Premium Indigo color */
+  --primary-hover: #4338ca;
+  --danger: #ef4444;         /* Crisp Red for delete */
+  --danger-hover: #dc2626;
+  --success: #10b981;        /* Emerald Green for success/save */
+  --border: #e2e8f0;         /* Light subtle borders */
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main App Container Styling */
+.app-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.app-header {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}

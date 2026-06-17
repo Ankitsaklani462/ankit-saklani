@@ -1,0 +1,234 @@
+/* --- Global Base Variables (Optional: reference ke liye agar use karna ho) --- */
+:root {
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-md: 8px;
+  --radius-sm: 6px;
+}
+
+/* --- Counter Button --- */
+.counter {
+  font-size: 16px;
+  padding: 6px 14px; /* Thoda clean padding */
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  backdrop-filter: blur(4px); /* Premium Glassmorphism effect */
+  transition: var(--transition-smooth);
+  margin-bottom: 24px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--accent-border);
+    transform: translateY(-1px); /* Halki si lift premium feel ke liye */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    transform: translateY(1px); /* Press karne par feedback */
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/* --- Hero Section (3D Layers) --- */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+    will-change: transform; /* Browser performance booster */
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+    transition: var(--transition-smooth);
+  }
+
+  .framework {
+    z-index: 3;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+
+    &:hover {
+      transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.45) translateY(-2px);
+    }
+  }
+
+  .vite {
+    z-index: 2;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+
+    &:hover {
+      transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.85) translateY(2px);
+    }
+  }
+}
+
+/* --- Center Layout --- */
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  /* Modern media query syntax */
+  @media (width <= 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+/* --- Next Steps Section --- */
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    transition: var(--transition-smooth);
+
+    @media (width <= 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+    opacity: 0.9;
+  }
+
+  /* Responsive Layout Container */
+  @media (width <= 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* --- Docs Sidebar Border --- */
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (width <= 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* --- Links & Buttons List --- */
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px; /* Gap thoda badhaya spacing ke liye */
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 15px; /* Standarized */
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    background: var(--social-bg);
+    display: flex;
+    padding: 8px 16px; /* Buttons zyada standard lagenge */
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+
+    &:hover {
+      box-shadow: var(--shadow);
+      background: var(--accent-bg); /* Hover par dynamic feedback */
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+    }
+
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (width <= 1024px) {
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 10px);
+      min-width: 140px; /* Choti screens par layout break nahi hoga */
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+/* --- Spacer --- */
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  
+  @media (width <= 1024px) {
+    height: 48px;
+  }
+}
+
+/* --- Ticks & Decorative Borders --- */
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5px; /* Aligned properly */
+    border: 5px solid transparent;
+    transition: var(--transition-smooth);
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
